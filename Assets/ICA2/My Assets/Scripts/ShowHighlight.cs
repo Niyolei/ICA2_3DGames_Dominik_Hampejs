@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ShowDescription : MonoBehaviour
+public class ShowHighlight : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject description;
+    [FormerlySerializedAs("description")] [SerializeField]
+    private GameObject highlight;
     // Start is called before the first frame update
     
     void Start()
@@ -16,11 +17,11 @@ public class ShowDescription : MonoBehaviour
     
     public void DescriptionOn()
     {
-        description.SetActive(true);
+        highlight.SetActive(true);
     }
     
     public void DescriptionOff()
     {
-        description.SetActive(false);
+        highlight.SetActive(false);
     }
 }

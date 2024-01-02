@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a8ee03665c7b7f4f89f7615cb9e3fc6, type: 3}
+  m_Name: SkeletonJailor
+  m_EditorClassIdentifier: 
+  conditionedDialogues:
+  - hasCondition: 0
+    requiredItem: {fileID: 0}
+    dialogueData: {fileID: 11400000, guid: e39d1fe3236c4cb40994cedc157de234, type: 2}
+  - hasCondition: 1
+    requiredItem: {fileID: 0}
+    dialogueData: {fileID: 11400000, guid: b68f1737b16c1e54bb20426888e07213, type: 2}
+  - hasCondition: 1
+    requiredItem: {fileID: 11400000, guid: 3706374d9c9b01649965b588824bf45c, type: 2}
+    dialogueData: {fileID: 11400000, guid: 3e57bba5b9f56714b984af00bcc9ae46, type: 2}
+  hasObtainable: 0
+  requiredItem: {fileID: 0}
+  item: {fileID: 0}

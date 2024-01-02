@@ -6,30 +6,36 @@ using UnityEngine.Serialization;
 
 public class OnHoverBehaviour : MonoBehaviour
 {
-    public LayerMask interactive;
+    private LayerMask interactive;
     private RaycastHit lastHit = default(RaycastHit);
+    private bool isHovering = false;
 
-    
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        interactive = LayerMask.GetMask("Interactive");
+    }
+    
+    
+    public void CheckForHover()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactive))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactive))
+        {
+            lastHit = hit;
+            
+            if (!Equals(lastHit, default(RaycastHit)))
             {
-                lastHit = hit;
-                
-                if (!Equals(lastHit, default(RaycastHit)))
-                {
-                    hit.collider.gameObject.GetComponent<ShowDescription>().DescriptionOn();
-                }
-                
+                hit.collider.gameObject.GetComponent<ShowHighlight>().DescriptionOn();
+                isHovering = true;
             }
-            else if (!RaycastHit.Equals(lastHit, default(RaycastHit)) && !Equals(lastHit, hit))
-            {
-                lastHit.collider.gameObject.GetComponent<ShowDescription>().DescriptionOff();
-            }
-
+                
+        }
+        else if (!RaycastHit.Equals(lastHit, default(RaycastHit)) && !Equals(lastHit, hit) && isHovering)
+        {
+            lastHit.collider.gameObject.GetComponent<ShowHighlight>().DescriptionOff();
+            isHovering = false;
+        }
     }
 }
