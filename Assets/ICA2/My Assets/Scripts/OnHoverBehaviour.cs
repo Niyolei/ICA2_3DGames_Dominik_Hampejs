@@ -19,7 +19,12 @@ public class OnHoverBehaviour : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactive))
             {
                 lastHit = hit;
-                hit.collider.gameObject.GetComponent<ShowDescription>().DescriptionOn();
+                
+                if (!Equals(lastHit, default(RaycastHit)))
+                {
+                    hit.collider.gameObject.GetComponent<ShowDescription>().DescriptionOn();
+                }
+                
             }
             else if (!RaycastHit.Equals(lastHit, default(RaycastHit)) && !Equals(lastHit, hit))
             {
