@@ -23,16 +23,21 @@ public class OnHoverBehaviour : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactive))
         {
-            lastHit = hit;
-            
             if (!Equals(lastHit, default(RaycastHit)))
             {
+                if (!Equals(lastHit, hit))
+                {   
+                    lastHit.collider.gameObject.GetComponent<ShowHighlight>().DescriptionOff();
+                    isHovering = false;
+                
+                }
                 hit.collider.gameObject.GetComponent<ShowHighlight>().DescriptionOn();
                 isHovering = true;
             }
-                
+            
+            lastHit = hit;
         }
-        else if (!RaycastHit.Equals(lastHit, default(RaycastHit)) && !Equals(lastHit, hit) && isHovering)
+        else if (!RaycastHit.Equals(lastHit, default(RaycastHit)) && isHovering)
         {
             lastHit.collider.gameObject.GetComponent<ShowHighlight>().DescriptionOff();
             isHovering = false;

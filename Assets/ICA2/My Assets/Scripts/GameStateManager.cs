@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GD;
 using UnityEditor;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ public class GameStateManager : MonoBehaviour
     
     private float _checkForHoverRate = 0.1f;
     private float _checkForHoverTimer = 0.0f;
+    
+    public EmptyGameEvent interactAnimationEvent;
     
     void Start()
     {
@@ -101,6 +104,11 @@ public class GameStateManager : MonoBehaviour
             {
                 currentGameState = GameState.Dialogue;
                 dialogueFilter.handleDialogue(interactableData, inventorySystem.GetInventory());
+                if (interactableData.shouldPlayAnimation)
+                {   
+                    interactAnimationEvent.Raise(new Empty());
+                    
+                }
                 if (interactableData.hasObtainable)
                 {
                     if (interactableData.hasCondition)

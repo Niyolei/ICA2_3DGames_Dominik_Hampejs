@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8ee03665c7b7f4f89f7615cb9e3fc6, type: 3}
   m_Name: Logs
   m_EditorClassIdentifier: 
+  shouldPlayAnimation: 1
   conditionedDialogues:
   - hasCondition: 0
     requiredItem: {fileID: 0}
     dialogueData: {fileID: 11400000, guid: a5ce7fef59303c34da98b36444d70bdf, type: 2}
   hasObtainable: 0
+  hasCondition: 0
   requiredItem: {fileID: 0}
   item: {fileID: 0}

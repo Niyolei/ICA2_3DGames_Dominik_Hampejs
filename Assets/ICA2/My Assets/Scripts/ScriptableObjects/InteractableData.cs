@@ -8,6 +8,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InteractableData", menuName = "ScriptableObjects/InteractableData", order = 0)]
 public class InteractableData : ScriptableObject
 {
+    public bool shouldPlayAnimation;
     public ConditionedDialogue[] conditionedDialogues;
     public bool hasObtainable;
     [ShowIf("hasObtainable")]

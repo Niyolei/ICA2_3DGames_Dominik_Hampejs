@@ -1514,6 +1514,7 @@ GameObject:
   - component: {fileID: 331704573}
   - component: {fileID: 331704572}
   - component: {fileID: 331704574}
+  - component: {fileID: 331704575}
   m_Layer: 0
   m_Name: GameState Manager
   m_TagString: Untagged
@@ -1549,6 +1550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentGameState: 0
+  interactAnimationEvent: {fileID: 11400000, guid: 0c1604fab51e674488aa235ef5cf9a25,
+    type: 2}
 --- !u!114 &331704571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1619,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &331704575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331704568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabe844d76ef83b4a8e1594d4c5e16e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
 --- !u!1001 &336426053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2651,6 +2667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596903395}
+  - component: {fileID: 596903396}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2676,6 +2693,35 @@ Transform:
   - {fileID: 572134934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &596903396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596903392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f7e23b28b2bd2429d86322c96c9b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Play interact animation on interact
+  Event: {fileID: 11400000, guid: 0c1604fab51e674488aa235ef5cf9a25, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1272060549}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Interact
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &633091276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7622724856221292152, guid: fb070a2d31206d9499ecc8a77be0ebf0,
@@ -4322,6 +4368,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 336439994}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1272060549 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4540229000190281644, guid: 60770bdb4dc667c45bea53db0339dc05,
+    type: 3}
+  m_PrefabInstance: {fileID: 336439994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1272060550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05,
@@ -4357,7 +4409,7 @@ NavMeshAgent:
   m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 0.1
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
