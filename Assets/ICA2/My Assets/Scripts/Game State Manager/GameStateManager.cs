@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GD;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class GameStateManager : MonoBehaviour
     private float _checkForHoverTimer = 0.0f;
     
     public EmptyGameEvent interactAnimationEvent;
+    public Vector3GameEvent moveEvent;
     
     void Start()
     {
@@ -83,6 +85,25 @@ public class GameStateManager : MonoBehaviour
     {
         Hover();
         Interact();
+        Move();
+    }
+
+    private void Move()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Vector3 targetPosition;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+            {
+                targetPosition = hit.point;
+                targetPosition.y = transform.position.y;
+                
+                moveEvent.Raise(targetPosition);
+            }
+        }
     }
 
     private void Hover()

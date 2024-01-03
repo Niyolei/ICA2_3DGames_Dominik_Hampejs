@@ -1552,6 +1552,7 @@ MonoBehaviour:
   currentGameState: 0
   interactAnimationEvent: {fileID: 11400000, guid: 0c1604fab51e674488aa235ef5cf9a25,
     type: 2}
+  moveEvent: {fileID: 11400000, guid: 405a4a03b238fd744901eee5551af436, type: 2}
 --- !u!114 &331704571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2668,6 +2669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596903395}
   - component: {fileID: 596903396}
+  - component: {fileID: 596903397}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2720,6 +2722,35 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Interact
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &596903397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596903392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8686105fa2566894fbad594cff6beb53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: On player move
+  Event: {fileID: 11400000, guid: 405a4a03b238fd744901eee5551af436, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1272060551}
+        m_TargetAssemblyTypeName: PlayerMoevement, Assembly-CSharp
+        m_MethodName: SetTargetPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &633091276 stripped
