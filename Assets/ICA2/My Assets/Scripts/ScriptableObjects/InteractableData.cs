@@ -10,7 +10,9 @@ public class InteractableData : ScriptableObject
 {
     public ConditionedDialogue[] conditionedDialogues;
     public bool hasObtainable;
-    [ShowIf("hasObtainable")] public Obtainable requiredItem;
+    [ShowIf("hasObtainable")]
+    public bool hasCondition;
+    [ShowIf("hasCondition")] public Obtainable requiredItem;
     [ShowIf("hasObtainable")] public Obtainable item;
 
 }

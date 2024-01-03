@@ -19,8 +19,9 @@ public class GameStateManager : MonoBehaviour
     private OnHoverBehaviour hoverBehaviour;
     private InteractionBehaviour interactionBehaviour;
     private DialogueFilter dialogueFilter;
+    private InventorySystem inventorySystem;
     
-    private float _checkForHoverRate = 0.3f;
+    private float _checkForHoverRate = 0.1f;
     private float _checkForHoverTimer = 0.0f;
     
     void Start()
@@ -28,6 +29,7 @@ public class GameStateManager : MonoBehaviour
         hoverBehaviour = GetComponent<OnHoverBehaviour>();
         interactionBehaviour = GetComponent<InteractionBehaviour>();
         dialogueFilter = GetComponent<DialogueFilter>();
+        inventorySystem = GetComponent<InventorySystem>();
     }
 
     // Update is called once per frame
@@ -98,7 +100,21 @@ public class GameStateManager : MonoBehaviour
             if (interactableData != null)
             {
                 currentGameState = GameState.Dialogue;
-                dialogueFilter.handleDialogue(interactableData);
+                dialogueFilter.handleDialogue(interactableData, inventorySystem.GetInventory());
+                if (interactableData.hasObtainable)
+                {
+                    if (interactableData.hasCondition)
+                    {
+                        if (inventorySystem.GetInventory().Contains(interactableData.requiredItem))
+                        {
+                            inventorySystem.AddItem(interactableData.item);
+                        }
+                    }
+                    else
+                    {
+                        inventorySystem.AddItem(interactableData.item);
+                    }
+                }
             }
         }
     }

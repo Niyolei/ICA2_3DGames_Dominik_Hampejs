@@ -8,13 +8,16 @@ public class DialogueFilter : MonoBehaviour
     public DialogueEvent dialogueEvent;
     public EmptyGameEvent leftClickEvent;
     private InteractableData currentData;
+    private HashSet<Obtainable> possessedItems;
     private int dialogueIndex = 0;
     
+    private bool otherOption = false;
     private bool isEnd = false;
     
-    public void handleDialogue(InteractableData interactableData)
+    public void handleDialogue(InteractableData interactableData, HashSet<Obtainable> possessedItems)
     {
         currentData= interactableData;
+        this.possessedItems = possessedItems;
         dialogueIndex = 0;
         isEnd = false;
         handleCondition();
@@ -25,6 +28,19 @@ public class DialogueFilter : MonoBehaviour
         if (!currentData.conditionedDialogues[dialogueIndex].hasCondition)
         {
             dialogueEvent.Raise(currentData.conditionedDialogues[dialogueIndex].dialogueData);
+        }
+        else
+        {
+            if (possessedItems.Contains(currentData.conditionedDialogues[dialogueIndex].requiredItem) || (otherOption && currentData.conditionedDialogues[dialogueIndex].requiredItem == null))
+            {
+                dialogueEvent.Raise(currentData.conditionedDialogues[dialogueIndex].dialogueData);
+                otherOption = false;
+            }
+            else
+            {
+                otherOption = true;
+                OnDialogueEnd();
+            }
         }
         
     }
@@ -39,6 +55,7 @@ public class DialogueFilter : MonoBehaviour
         else
         {
             isEnd = true;
+            LeftClick();
         }
     }
 
