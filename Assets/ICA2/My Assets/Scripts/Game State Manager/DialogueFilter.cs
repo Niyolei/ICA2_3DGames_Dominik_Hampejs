@@ -13,7 +13,6 @@ public class DialogueFilter : MonoBehaviour
     
     private DialogueData itemDialogue;
     
-    private bool obtainItem = false;
     private bool otherOption = false;
     public bool isEnd = false;
     
@@ -23,7 +22,6 @@ public class DialogueFilter : MonoBehaviour
         this.possessedItems = possessedItems;
         dialogueIndex = 0;
         isEnd = false;
-        obtainItem = false;
         if(currentData.conditionedDialogues.Length == 0)
            OnDialogueEnd();
         else
@@ -57,11 +55,7 @@ public class DialogueFilter : MonoBehaviour
             dialogueIndex++;
             if (dialogueIndex >= currentData.conditionedDialogues.Length)
             {
-                if (!obtainItem)
-                {
-                    obtainItem = false;
                     isEnd = true;
-                }
             }
             else
             {
@@ -76,7 +70,7 @@ public class DialogueFilter : MonoBehaviour
     
     public void AddItemDialogue(DialogueData dialogueData)
     {
-        obtainItem = true;
+        isEnd = false;
         dialogueEvent.Raise(dialogueData);
     }
 }
