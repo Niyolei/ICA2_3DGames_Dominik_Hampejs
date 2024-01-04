@@ -58,6 +58,9 @@ public class GameStateManager : MonoBehaviour
             case GameState.ItemObtained:
                 ObtainItem();
                 break;
+            case GameState.AnEvent:
+                currentGameState = GameState.Moving;    
+                break;
             case GameState.Fighting:
                 
                 break;

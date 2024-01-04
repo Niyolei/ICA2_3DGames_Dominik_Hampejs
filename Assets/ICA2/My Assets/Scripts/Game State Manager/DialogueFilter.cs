@@ -24,7 +24,10 @@ public class DialogueFilter : MonoBehaviour
         dialogueIndex = 0;
         isEnd = false;
         obtainItem = false;
-        handleCondition();
+        if(currentData.conditionedDialogues.Length == 0)
+           OnDialogueEnd();
+        else
+            handleCondition();
     }
 
     private void handleCondition()
