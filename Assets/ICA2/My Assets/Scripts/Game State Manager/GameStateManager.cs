@@ -55,12 +55,28 @@ public class GameStateManager : MonoBehaviour
             case GameState.Dialogue:
                 Dialogue();
                 break;
+            case GameState.ItemObtained:
+                ObtainItem();
+                break;
             case GameState.Fighting:
                 
                 break;
             case GameState.GameOver:
                 
                 break;
+        }
+        
+    }
+
+    private void ObtainItem()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            dialogueFilter.LeftClick();
+            if (dialogueFilter.isEnd)
+            {
+                currentGameState = GameState.Moving;
+            }
         }
         
     }
@@ -161,7 +177,8 @@ public class GameStateManager : MonoBehaviour
                 inventorySystem.AddItem(currentData.item);
             }
             currentGameState = GameState.ItemObtained;
-            dialogueFilter.addItemDialogue(currentData.item.dialogueData);
+            dialogueFilter.AddItemDialogue(currentData.item.dialogueData);
+            return true;
         }
 
         return false;

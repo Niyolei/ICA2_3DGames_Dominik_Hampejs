@@ -51,17 +51,15 @@ public class DialogueFilter : MonoBehaviour
 
     public void OnDialogueEnd()
     {
-        dialogueIndex++;
-        if (dialogueIndex >= currentData.conditionedDialogues.Length)
-        {
-            isEnd = true;
-        }
-        else
-        {
-            handleCondition();
-        }
-        
-        
+            dialogueIndex++;
+            if (dialogueIndex >= currentData.conditionedDialogues.Length)
+            {
+                isEnd = true;
+            }
+            else
+            {
+                handleCondition();
+            }
     }
 
     public void LeftClick()
@@ -69,9 +67,9 @@ public class DialogueFilter : MonoBehaviour
         leftClickEvent.Raise(new Empty());
     }
     
-    public void addItemDialogue(DialogueData dialogueData)
+    public void AddItemDialogue(DialogueData dialogueData)
     {
         obtainItem = true;
-        itemDialogue = dialogueData;
+        dialogueEvent.Raise(dialogueData);
     }
 }

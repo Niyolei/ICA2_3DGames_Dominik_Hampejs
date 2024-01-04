@@ -15,4 +15,4 @@ MonoBehaviour:
   name: Shield
   image: {fileID: 0}
   description: Great for defending yourself
-  dialogueData: {fileID: 0}
+  dialogueData: {fileID: 11400000, guid: 885441aa1950cc5488821b9094178b3f, type: 2}
