@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using GD;
 using UnityEngine;
 
 public class InteractionBehaviour : MonoBehaviour
 {
     private LayerMask interactive;
+    public BoolGameEvent playerInRange;
     
     
     // Start is called before the first frame update
@@ -21,7 +23,13 @@ public class InteractionBehaviour : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactive))
         {
-            return hit.collider.gameObject.GetComponent<InteractionHolder>().interactableData;
+            playerInRange.Raise(true);
+            if (hit.collider.gameObject.GetComponent<InteractionHolder>().playerInRange)
+            {
+                playerInRange.Raise(false);
+                return hit.collider.gameObject.GetComponent<InteractionHolder>().interactableData;
+            }
+            
         }
         return null;
     }

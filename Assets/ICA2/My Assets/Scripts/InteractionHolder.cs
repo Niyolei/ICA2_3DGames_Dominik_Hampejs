@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class InteractionHolder : MonoBehaviour
 {
+    public bool playerInRange;
     public InteractableData interactableData;
 }

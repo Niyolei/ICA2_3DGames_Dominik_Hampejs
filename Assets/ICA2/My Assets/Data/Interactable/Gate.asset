@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Gate
   m_EditorClassIdentifier: 
   shouldPlayAnimation: 0
-  conditionedDialogues: []
+  conditionedDialogues:
+  - hasCondition: 0
+    requiredItem: {fileID: 0}
+    dialogueData: {fileID: 11400000, guid: 59c227e5bff4fa14fa98861d06c910c9, type: 2}
   hasObtainable: 0
   hasCondition: 0
   requiredItem: {fileID: 0}

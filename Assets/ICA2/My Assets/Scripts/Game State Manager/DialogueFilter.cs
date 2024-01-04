@@ -57,7 +57,11 @@ public class DialogueFilter : MonoBehaviour
             dialogueIndex++;
             if (dialogueIndex >= currentData.conditionedDialogues.Length)
             {
-                isEnd = true;
+                if (!obtainItem)
+                {
+                    obtainItem = false;
+                    isEnd = true;
+                }
             }
             else
             {

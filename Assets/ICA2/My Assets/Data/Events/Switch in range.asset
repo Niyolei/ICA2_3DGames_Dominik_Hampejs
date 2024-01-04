@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a4de141f06d8a439784bcecd155e87, type: 3}
-  m_Name: Gate is closed
+  m_Script: {fileID: 11500000, guid: 033cec1abb0926d459ba95ed6300f0fe, type: 3}
+  m_Name: Switch in range
   m_EditorClassIdentifier: 
-  Monologues:
-  - Title: Juan
-    Line: The gate is locked. I need a key.
