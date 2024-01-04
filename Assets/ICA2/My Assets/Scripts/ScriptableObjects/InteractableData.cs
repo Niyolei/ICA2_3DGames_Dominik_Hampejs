@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GD;
+using ICA2.My_Assets.Scripts.ScriptableObjects;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,6 +17,10 @@ public class InteractableData : ScriptableObject
     public bool hasCondition;
     [ShowIf("hasCondition")] public Obtainable requiredItem;
     [ShowIf("hasObtainable")] public Obtainable item;
+    public bool hasEvent;
+    [ShowIf("hasEvent")] public ConditionedEvent conditionedEvent;
+    public bool hasFight;
+    [ShowIf("hasFight")] public ConditionedFight conditionedFight;
 
 }
 
@@ -25,4 +31,22 @@ public class ConditionedDialogue
     [ShowIf("hasCondition")]
     public Obtainable requiredItem;
     public DialogueData dialogueData;
+}
+
+[System.Serializable]
+public class ConditionedEvent
+{
+    public bool hasCondition; 
+    [ShowIf("hasCondition")]
+    public Obtainable requiredItem;
+    public EmptyGameEvent gameEvent;
+}
+
+[System.Serializable]
+public class ConditionedFight
+{
+    public bool hasCondition; 
+    [ShowIf("hasCondition")]
+    public Obtainable requiredItem;
+    public FightData fightData;
 }

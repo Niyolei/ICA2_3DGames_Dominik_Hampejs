@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Shield Obtained
   m_EditorClassIdentifier: 
   Monologues:
-  - Title: Juan
-    Line: Come at me then!
-  - Title: Skeleton
-    Line: As you wish!
+  - Title: Shield
+    Line: You have found a shield. Use it to defeat the Skeleton jailor

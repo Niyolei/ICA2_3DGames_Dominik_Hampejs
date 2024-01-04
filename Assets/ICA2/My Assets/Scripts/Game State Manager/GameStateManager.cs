@@ -13,6 +13,8 @@ public class GameStateManager : MonoBehaviour
         Moving,
         Fighting,
         Dialogue,
+        ItemObtained,
+        AnEvent,
         GameOver
     }
     
@@ -28,6 +30,8 @@ public class GameStateManager : MonoBehaviour
     
     public EmptyGameEvent interactAnimationEvent;
     public Vector3GameEvent moveEvent;
+    
+    private InteractableData currentData;
     
     void Start()
     {
@@ -65,9 +69,21 @@ public class GameStateManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            bool isEnd = dialogueFilter.LeftClick();
-            if (isEnd)
+            dialogueFilter.LeftClick();
+            if (dialogueFilter.isEnd)
             {
+                if (CheckForFight())
+                {
+                    return;
+                }
+                if (CheckForObtainable())
+                {
+                    return;
+                }
+                if (CheckForEvent())
+                {
+                    return;
+                }
                 currentGameState = GameState.Moving;
             }
         }
@@ -116,33 +132,78 @@ public class GameStateManager : MonoBehaviour
         }
     }
     
+    private bool CheckForFight()
+    {
+        if (currentData.hasFight)
+        {
+            currentGameState = GameState.Fighting;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    private bool CheckForObtainable()
+    {
+        if (currentData.hasObtainable)
+        {
+            if (currentData.hasCondition)
+            {
+                if (inventorySystem.GetInventory().Contains(currentData.requiredItem))
+                {
+                    inventorySystem.AddItem(currentData.item);
+                }
+            }
+            else
+            {
+                inventorySystem.AddItem(currentData.item);
+            }
+            currentGameState = GameState.ItemObtained;
+            dialogueFilter.addItemDialogue(currentData.item.dialogueData);
+        }
+
+        return false;
+    }
+    
+    private bool CheckForEvent()
+    {
+        if (currentData.hasEvent)
+        {
+            if (currentData.hasCondition)
+            {
+                if (inventorySystem.GetInventory().Contains(currentData.requiredItem))
+                {
+                    currentData.conditionedEvent.gameEvent.Raise(new Empty());
+                }
+            }
+            else
+            {
+                currentData.conditionedEvent.gameEvent.Raise(new Empty());
+            }
+            currentGameState = GameState.AnEvent;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     private void Interact()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            InteractableData interactableData = interactionBehaviour.CheckForInteractable();
-            if (interactableData != null)
+            currentData = interactionBehaviour.CheckForInteractable();
+            if (currentData != null)
             {
                 currentGameState = GameState.Dialogue;
-                dialogueFilter.handleDialogue(interactableData, inventorySystem.GetInventory());
-                if (interactableData.shouldPlayAnimation)
+                dialogueFilter.handleDialogue(currentData, inventorySystem.GetInventory());
+                if (currentData.shouldPlayAnimation)
                 {   
                     interactAnimationEvent.Raise(new Empty());
                     
-                }
-                if (interactableData.hasObtainable)
-                {
-                    if (interactableData.hasCondition)
-                    {
-                        if (inventorySystem.GetInventory().Contains(interactableData.requiredItem))
-                        {
-                            inventorySystem.AddItem(interactableData.item);
-                        }
-                    }
-                    else
-                    {
-                        inventorySystem.AddItem(interactableData.item);
-                    }
                 }
             }
         }
