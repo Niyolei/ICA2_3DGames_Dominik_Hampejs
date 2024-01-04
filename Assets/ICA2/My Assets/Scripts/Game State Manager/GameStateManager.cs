@@ -78,6 +78,10 @@ public class GameStateManager : MonoBehaviour
             dialogueFilter.LeftClick();
             if (dialogueFilter.isEnd)
             {
+                if (CheckForEvent())
+                {
+                    return;
+                }
                 currentGameState = GameState.Moving;
             }
         }

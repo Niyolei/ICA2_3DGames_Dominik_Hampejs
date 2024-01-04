@@ -17,15 +17,12 @@ public class LogsPuzzle : MonoBehaviour
         
         for (int i = 0; i < logs.Length; i++)
         {
-            if (i == _suslogsIndex)
-            {
-                logs[i].GetComponent<InteractionHolder>().interactableData = susLogs;
-            }
-            else
-            {
-                logs[i].GetComponent<InteractionHolder>().interactableData = normalLogs;
-            }
+            logs[i].GetComponent<InteractionHolder>().interactableData = i == _suslogsIndex ? susLogs : normalLogs;
         }
-        
+    }
+
+    public void AfterShieldObtained()
+    {
+        logs[_suslogsIndex].GetComponent<InteractionHolder>().interactableData = normalLogs;
     }
 }
