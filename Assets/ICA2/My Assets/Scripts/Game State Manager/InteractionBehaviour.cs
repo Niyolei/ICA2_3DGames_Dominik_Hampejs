@@ -9,6 +9,7 @@ public class InteractionBehaviour : MonoBehaviour
     public BoolGameEvent playerInRange;
     
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,10 @@ public class InteractionBehaviour : MonoBehaviour
             {
                 playerInRange.Raise(false);
                 return hit.collider.gameObject.GetComponent<InteractionHolder>().interactableData;
+            }
+            else
+            {
+                
             }
             
         }
