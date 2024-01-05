@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SwordMovement : MonoBehaviour
 {
+    public FightManager fightManager;
     public GameObject sword;
     
     public float toZoneTime = 0.5f;
@@ -66,83 +67,157 @@ public class SwordMovement : MonoBehaviour
         _swordOriginalPosition = sword.transform.localPosition;
         _swordOriginalRotation = sword.transform.localEulerAngles;
     }
-    
-    public void AttackAnimation(int zone)
+
+    public void AttackRandom()
     {
-        
+        ZoneType type = (ZoneType) Random.Range(0, 5);
+        AttackAnimation(type);
     }
     
-    [Button]
+    private void AttackAnimation(ZoneType type)
+    {
+        switch (type)
+        {
+            case ZoneType.Top:
+                StartCoroutine(AttackTop(type));
+                break;
+            case ZoneType.RightTop:
+                StartCoroutine(AttackRightTop(type));
+                break;
+            case ZoneType.LeftTop:
+                StartCoroutine(AttackLeftTop(type));
+                break;
+            case ZoneType.RightBottom:
+                StartCoroutine(AttackRightDown(type));
+                break;
+            case ZoneType.LeftBottom:
+                StartCoroutine(AttackLeftDown(type));
+                break;
+        }
+    }
+
+    IEnumerator AttackTop(ZoneType type)
+    {
+        OriginalPosition();
+        yield return new WaitForSeconds(toZoneTime);
+        TopZone();
+        yield return new WaitForSeconds(toZoneTime);
+        TopAttackZone();
+        yield return new WaitForSeconds(toAttackZoneTime);
+        fightManager.Outcome(type);
+    }
+    
+    IEnumerator AttackRightTop(ZoneType type)
+    {
+        OriginalPosition();
+        yield return new WaitForSeconds(toZoneTime);
+        RightTopZone();
+        yield return new WaitForSeconds(toZoneTime);
+        RightTopAttackZone();
+        yield return new WaitForSeconds(toAttackZoneTime);
+        fightManager.Outcome(type);
+    }
+    
+    IEnumerator AttackRightDown(ZoneType type)
+    {
+        OriginalPosition();
+        yield return new WaitForSeconds(toZoneTime);
+        RightDownZone();
+        yield return new WaitForSeconds(toZoneTime);
+        RightDownAttackZone();
+        yield return new WaitForSeconds(toAttackZoneTime);
+        fightManager.Outcome(type);
+    }
+    
+    IEnumerator AttackLeftDown(ZoneType type)
+    {
+        OriginalPosition();
+        yield return new WaitForSeconds(toZoneTime);
+        LeftDownZone();
+        yield return new WaitForSeconds(toZoneTime);
+        LeftDownAttackZone();
+        yield return new WaitForSeconds(toAttackZoneTime);
+        fightManager.Outcome(type);
+    }
+    
+    IEnumerator AttackLeftTop(ZoneType type)
+    {
+        OriginalPosition();
+        yield return new WaitForSeconds(toZoneTime);
+        LeftTopZone();
+        yield return new WaitForSeconds(toZoneTime);
+        LeftTopAttackZone();
+        yield return new WaitForSeconds(toAttackZoneTime);
+        fightManager.Outcome(type);
+    }
+    
     public void OriginalPosition()
     {
         sword.transform.DOLocalMove(_swordOriginalPosition, toZoneTime).SetEase(Ease.OutBack);
         sword.transform.DOLocalRotate(_swordOriginalRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
-    [Button]
     private void TopZone()
     {
         sword.transform.DOLocalMove(topZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
         sword.transform.DOLocalRotate(topRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
-    [Button]
     private void TopAttackZone()
     {
         sword.transform.DOLocalMove(topAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
         sword.transform.DOLocalRotate(topAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
 
-    [Button]
+
     private void RightTopZone()
     {
         sword.transform.DOLocalMove(rightTopZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
         sword.transform.DOLocalRotate(rightTopRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
-    [Button]
+
     private void RightTopAttackZone()
     {
         sword.transform.DOLocalMove(rightTopAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
         sword.transform.DOLocalRotate(rightTopAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
-    [Button]
+
     private void RightDownZone()
     {
         sword.transform.DOLocalMove(rightDownZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
         sword.transform.DOLocalRotate(rightDownRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
-    [Button]
+
     private void RightDownAttackZone()
     {
         sword.transform.DOLocalMove(rightDownAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
         sword.transform.DOLocalRotate(rightDownAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
-    [Button]
+
     private void LeftDownZone()
     {
         sword.transform.DOLocalMove(leftDownZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
         sword.transform.DOLocalRotate(leftDownRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
-    [Button]
+
     private void LeftDownAttackZone()
     {
         sword.transform.DOLocalMove(leftDownAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
         sword.transform.DOLocalRotate(leftDownAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
-    [Button]
+
     private void LeftTopZone()
     {
         sword.transform.DOLocalMove(leftTopZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
         sword.transform.DOLocalRotate(leftTopRotation, toZoneTime).SetEase(Ease.OutBack);
     }
-    
-    [Button]
+
     private void LeftTopAttackZone()
     {
         sword.transform.DOLocalMove(leftTopAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);

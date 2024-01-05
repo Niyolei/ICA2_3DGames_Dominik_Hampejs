@@ -23,6 +23,28 @@ public class ShieldMovement : MonoBehaviour
     [TabGroup("Shield Rotation")] public Vector3 leftDownRotation = new Vector3(20, -45, 25);
     
     
+    public void MoveToZone(ZoneType type)
+    {
+        switch (type)
+        {
+            case ZoneType.Top:
+                ToTopZone();
+                break;
+            case ZoneType.RightTop:
+                ToRightTopZone();
+                break;
+            case ZoneType.LeftTop:
+                ToLeftTopZone();
+                break;
+            case ZoneType.RightBottom:
+                ToRightDownZone();
+                break;
+            case ZoneType.LeftBottom:
+                ToLeftDownZone();
+                break;
+        }
+    }
+    
     [Button]
     public void ToTopZone()
     {
