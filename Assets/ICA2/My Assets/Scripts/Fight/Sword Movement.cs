@@ -8,6 +8,9 @@ public class SwordMovement : MonoBehaviour
 {
     public GameObject sword;
     
+    public float toZoneTime = 0.5f;
+    public float toAttackZoneTime = 0.2f;
+    
     [TabGroup("Sword Zones")]
     public GameObject topZone;
     [TabGroup("Sword Zones")]
@@ -72,78 +75,78 @@ public class SwordMovement : MonoBehaviour
     [Button]
     public void OriginalPosition()
     {
-        sword.transform.DOLocalMove(_swordOriginalPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(_swordOriginalRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(_swordOriginalPosition, toZoneTime).SetEase(Ease.OutBack);
+        sword.transform.DOLocalRotate(_swordOriginalRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
     [Button]
     private void TopZone()
     {
-        sword.transform.DOLocalMove(topZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(topRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(topZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+        sword.transform.DOLocalRotate(topRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
     [Button]
     private void TopAttackZone()
     {
-        sword.transform.DOLocalMove(topAttackZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(topAttackRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(topAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
+        sword.transform.DOLocalRotate(topAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
 
     [Button]
     private void RightTopZone()
     {
-        sword.transform.DOLocalMove(rightTopZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(rightTopRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(rightTopZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+        sword.transform.DOLocalRotate(rightTopRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
     [Button]
     private void RightTopAttackZone()
     {
-        sword.transform.DOLocalMove(rightTopAttackZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(rightTopAttackRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(rightTopAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
+        sword.transform.DOLocalRotate(rightTopAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
     [Button]
     private void RightDownZone()
     {
-        sword.transform.DOLocalMove(rightDownZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(rightDownRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(rightDownZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+        sword.transform.DOLocalRotate(rightDownRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
     [Button]
     private void RightDownAttackZone()
     {
-        sword.transform.DOLocalMove(rightDownAttackZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(rightDownAttackRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(rightDownAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
+        sword.transform.DOLocalRotate(rightDownAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
     [Button]
     private void LeftDownZone()
     {
-        sword.transform.DOLocalMove(leftDownZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(leftDownRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(leftDownZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+        sword.transform.DOLocalRotate(leftDownRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
     [Button]
     private void LeftDownAttackZone()
     {
-        sword.transform.DOLocalMove(leftDownAttackZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(leftDownAttackRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(leftDownAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
+        sword.transform.DOLocalRotate(leftDownAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
     [Button]
     private void LeftTopZone()
     {
-        sword.transform.DOLocalMove(leftTopZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(leftTopRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(leftTopZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+        sword.transform.DOLocalRotate(leftTopRotation, toZoneTime).SetEase(Ease.OutBack);
     }
     
     [Button]
     private void LeftTopAttackZone()
     {
-        sword.transform.DOLocalMove(leftTopAttackZone.transform.localPosition, 0.5f).SetEase(Ease.OutBack);
-        sword.transform.DOLocalRotate(leftTopAttackRotation, 0.5f).SetEase(Ease.OutBack);
+        sword.transform.DOLocalMove(leftTopAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
+        sword.transform.DOLocalRotate(leftTopAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
     
 }
