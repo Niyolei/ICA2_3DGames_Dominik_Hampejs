@@ -10,6 +10,7 @@ public class GameStateManager : MonoBehaviour
     public enum GameState
     {
         Menu,
+        Paused,
         Moving,
         Fighting,
         Dialogue,
@@ -19,6 +20,7 @@ public class GameStateManager : MonoBehaviour
     }
     
     public GameState currentGameState = GameState.Menu;
+    private GameState previousGameState = GameState.Menu;
     
     private OnHoverBehaviour hoverBehaviour;
     private InteractionBehaviour interactionBehaviour;
@@ -46,9 +48,6 @@ public class GameStateManager : MonoBehaviour
     {
         switch (currentGameState)
         {
-            case GameState.Menu:
-                Menu();
-                break;
             case GameState.Moving:
                 Moving();
                 break;
@@ -112,11 +111,21 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
-    private void Menu()
+    public void StartGame()
     {
-        if (Input.GetMouseButtonDown(0))
+        currentGameState = GameState.Moving;
+    }
+    
+    public void OnPause(bool isPaused)
+    {
+        if (isPaused)
         {
-            currentGameState = GameState.Moving;
+            previousGameState = currentGameState;
+            currentGameState = GameState.Paused;
+        }
+        else
+        {
+            currentGameState = previousGameState;
         }
     }
     
