@@ -37,3 +37,5 @@ MonoBehaviour:
     hasCondition: 0
     requiredItem: {fileID: 11400000, guid: 3706374d9c9b01649965b588824bf45c, type: 2}
     fightData: {fileID: 11400000, guid: c497129837418d7489daeba2842abf04, type: 2}
+    winDialogue: {fileID: 0}
+    loseDialogue: {fileID: 11400000, guid: a0f03553a878768459767e7aec2b9ea3, type: 2}

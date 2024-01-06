@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GD;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,7 @@ public class GameStateManager : MonoBehaviour
         Paused,
         Moving,
         Fighting,
+        FightDialogue,
         Dialogue,
         ItemObtained,
         AnEvent,
@@ -35,6 +37,8 @@ public class GameStateManager : MonoBehaviour
     public FightDataEvent fightEvent;
     
     private InteractableData currentData;
+    
+    private bool fightEnd = false;
     
     void Start()
     {
@@ -61,8 +65,8 @@ public class GameStateManager : MonoBehaviour
             case GameState.AnEvent:
                 currentGameState = GameState.Moving;    
                 break;
-            case GameState.Fighting:
-                
+            case GameState.FightDialogue:
+                ObtainItem();
                 break;
             case GameState.GameOver:
                 
@@ -256,8 +260,25 @@ public class GameStateManager : MonoBehaviour
     
     
 
-    private void Fighting()
+    public void Fighting(bool outcome)
     {
+        if (outcome)
+        {
+            if (CheckForObtainable())
+            {
+                return;
+            }
+            if (CheckForEvent())
+            {
+                return;
+            }
+            currentGameState = GameState.Moving;
+        }
+        else
+        {
+            currentGameState = GameState.FightDialogue;
+            dialogueFilter.AddItemDialogue(currentData.conditionedFight.loseDialogue);
+        }
         
     }
     

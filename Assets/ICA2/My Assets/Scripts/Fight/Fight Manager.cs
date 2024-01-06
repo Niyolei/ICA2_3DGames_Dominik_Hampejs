@@ -39,6 +39,13 @@ public class FightManager : MonoBehaviour
     
     private bool shouldSwing = false;
     
+    public int maxHealth = 3;
+    private int currentHealth;
+    public int enemyMaxHealth = 3;
+    private int enemyCurrentHealth;
+    
+    public BoolGameEvent endOfFightEvent;
+    
     
 
     public void Update()
@@ -102,8 +109,9 @@ public class FightManager : MonoBehaviour
         playerPosition.transform.rotation = Quaternion.LookRotation(currentFightData.enemyPosition.transform.position - playerPosition.transform.position);
         virtualCamera.gameObject.SetActive(true);
         StartCoroutine(StartSwings());
+        currentHealth = maxHealth;
+        enemyCurrentHealth = enemyMaxHealth;
         isFighting = true;
-        
     }
     
 
@@ -128,11 +136,11 @@ public class FightManager : MonoBehaviour
             {
                 swordMovement.Blocked(zoneType);
                 shieldMovement.PlayParticle();
+                Parry();
             }
             else
             {
-                swordMovement.Hit();
-                HitAnimationEvent.Raise(new Empty());
+                GetHit();
             }
             
         }
@@ -143,13 +151,45 @@ public class FightManager : MonoBehaviour
         }
         else
         {
-            swordMovement.Hit();
-            HitAnimationEvent.Raise(new Empty());
+            GetHit();
         }
         
         isParring = false;
         shouldParry = false;
     }
+    
+    private void GetHit()
+    {
+        currentHealth--;
+        swordMovement.Hit();
+        HitAnimationEvent.Raise(new Empty());
+        if (currentHealth <= 0)
+        {
+            EndFight(false);
+        }
+    }
+    
+    private void Parry()
+    {
+        enemyCurrentHealth--;
+        if (enemyCurrentHealth <= 0)
+        {
+            EndFight(true);
+        }
+    }
+
+    private void EndFight(bool win)
+    {
+        isFighting = false;
+        virtualCamera.gameObject.SetActive(false);
+        fightingObjects.SetActive(false);
+        currentFightData.enemyPosition.GetComponent<EnemyAnimation>().SetFight(false);
+        playerAnimator.SetBool(fightHash, false);
+        StopAllCoroutines();
+        swordMovement.OriginalPosition();
+        endOfFightEvent.Raise(win);
+    }
+    
   
     
 }

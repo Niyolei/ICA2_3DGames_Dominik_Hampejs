@@ -129,6 +129,41 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 244082511353328286}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &355791763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2871436772960334912, guid: 806776f281690e84893cce2e0508599c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1336127553316048010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &355791769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355791763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d271e704cbb16b24797a9420ddbe8f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: FIght ends
+  Event: {fileID: 11400000, guid: cfce5ec5a293b5445a310b5e4004a771, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1420912116}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: Fighting
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &769060656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4987497444023589929, guid: 54fae72825873694baaacd93bd04949f,
@@ -4975,6 +5010,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1833270022344757607}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1420912116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6284509549269507573, guid: 806776f281690e84893cce2e0508599c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1336127553316048010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1350a78bf3411d41b04047cc20a5497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &244082511353328286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5130,7 +5177,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2871436772960334912, guid: 806776f281690e84893cce2e0508599c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 355791769}
   m_SourcePrefab: {fileID: 100100000, guid: 806776f281690e84893cce2e0508599c, type: 3}
 --- !u!1001 &1779642160769237095
 PrefabInstance:
@@ -5256,6 +5307,12 @@ PrefabInstance:
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 1338590147}
+    - target: {fileID: 7261886118694495545, guid: 54fae72825873694baaacd93bd04949f,
+        type: 3}
+      propertyPath: endOfFightEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: cfce5ec5a293b5445a310b5e4004a771,
+        type: 2}
     - target: {fileID: 8655568941805933594, guid: 54fae72825873694baaacd93bd04949f,
         type: 3}
       propertyPath: m_LocalPosition.x
