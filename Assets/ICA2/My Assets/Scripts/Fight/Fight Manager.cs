@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GD;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,8 +11,10 @@ public class FightManager : MonoBehaviour
     public SwordMovement swordMovement;
     public ShieldMovement shieldMovement;
     public TextMeshPro textMeshPro;
+    public EmptyGameEvent HitAnimationEvent;
     
     private ZoneType shieldZoneType;
+    
     
 
     public void Update()
@@ -47,6 +50,7 @@ public class FightManager : MonoBehaviour
         {
             textMeshPro.text = "Hit";
             swordMovement.Hit();
+            HitAnimationEvent.Raise(new Empty());
         }
         
     }
