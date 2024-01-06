@@ -155,6 +155,11 @@ public class ShieldMovement : MonoBehaviour
         shield.transform.DOLocalMove(shield.transform.localPosition - parryOffset, parryWindow).SetEase(Ease.OutBack);
     }
     
+    public void PlayParticle()
+    {
+        shield.GetComponentInChildren<ParticleSystem>().Play();
+    }
+    
 }
 
 

@@ -7,6 +7,7 @@ using ICA2.My_Assets.Scripts.ScriptableObjects;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FightManager : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class FightManager : MonoBehaviour
     public Vector3GameEvent PlayerPositionEvent;
     public SwordMovement swordMovement;
     public ShieldMovement shieldMovement;
-    public TextMeshPro textMeshPro;
     public EmptyGameEvent HitAnimationEvent;
     
     public GameObject virtualCamera;
@@ -32,44 +32,59 @@ public class FightManager : MonoBehaviour
     public float parryTime = 0.2f;
     private float parryTimer = 0f;
     
+    public float parryResetTime = 0.7f;
+    private float parryResetTimer = 0f;
+    
+    private bool isFighting = false;
+    
+    private bool shouldSwing = false;
+    
     
 
     public void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isParring)
+        if (isFighting)
         {
-            isParring = true;
-            shouldParry = true;
-            shieldMovement.Parry(shieldZoneType);
-        }
-
-        if (!isParring)
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Fight")))
+            if (Input.GetMouseButtonDown(0) && !isParring)
             {
-                shieldZoneType = hit.collider.gameObject.GetComponent<ZoneHolder>().zoneType;
-                shieldMovement.MoveToZone(shieldZoneType);
+                isParring = true;
+                shouldParry = true;
+                shieldMovement.Parry(shieldZoneType);
+            }
+
+            if (!isParring)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Fight")))
+                {
+                    shieldZoneType = hit.collider.gameObject.GetComponent<ZoneHolder>().zoneType;
+                    shieldMovement.MoveToZone(shieldZoneType);
+                }
+            }
+            else
+            {
+                parryTimer += Time.deltaTime;
+                if (parryTimer >= parryTime)
+                {
+                    shouldParry = false;
+                    parryTimer = 0f;
+                }
+                parryResetTimer += Time.deltaTime;
+                if (parryResetTimer >= parryResetTime)
+                {
+                    isParring = false;
+                    parryResetTimer = 0f;
+                }
+            }
+
+            if (shouldSwing)
+            {
+                shouldSwing = false;
+                StartCoroutine(SwingSword());
             }
         }
-        else
-        {
-            parryTimer += Time.deltaTime;
-            if (parryTimer >= parryTime)
-            {
-                shouldParry = false;
-                parryTimer = 0f;
-            }
-        }
-        
-        if (Input.GetMouseButtonDown(3))
-        {
-            SwingSword();
-        }
-
-        
     }
 
     public void StartFight(FightData fightData)
@@ -86,14 +101,23 @@ public class FightManager : MonoBehaviour
         playerAnimator.SetBool(fightHash, true);
         playerPosition.transform.rotation = Quaternion.LookRotation(currentFightData.enemyPosition.transform.position - playerPosition.transform.position);
         virtualCamera.gameObject.SetActive(true);
-        textMeshPro.text = "";
+        StartCoroutine(StartSwings());
+        isFighting = true;
         
     }
     
 
-    private void SwingSword()
+    private IEnumerator SwingSword()
     {
         swordMovement.AttackRandom();
+        yield return new WaitForSeconds(swordMovement.toZoneTime* 2 + 2* swordMovement.toAttackZoneTime);
+        shouldSwing = true;
+    }
+    
+    private IEnumerator StartSwings()
+    {
+        yield return new WaitForSeconds(1f);
+        shouldSwing = true;
     }
 
     public void Outcome(ZoneType zoneType)
@@ -102,12 +126,11 @@ public class FightManager : MonoBehaviour
         {
             if (shouldParry)
             {
-                textMeshPro.text = "Parry";
                 swordMovement.Blocked(zoneType);
+                shieldMovement.PlayParticle();
             }
             else
             {
-                textMeshPro.text = "Hit";
                 swordMovement.Hit();
                 HitAnimationEvent.Raise(new Empty());
             }
@@ -115,12 +138,11 @@ public class FightManager : MonoBehaviour
         }
         else if (zoneType == shieldZoneType)
         {
-            textMeshPro.text = "Blocked";
+            
             swordMovement.Blocked(zoneType);
         }
         else
         {
-            textMeshPro.text = "Hit";
             swordMovement.Hit();
             HitAnimationEvent.Raise(new Empty());
         }
