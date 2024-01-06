@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a8ee03665c7b7f4f89f7615cb9e3fc6, type: 3}
   m_Name: SkeletonJailor
   m_EditorClassIdentifier: 
+  shouldPlayAnimation: 0
   conditionedDialogues:
   - hasCondition: 0
     requiredItem: {fileID: 0}
@@ -26,3 +27,13 @@ MonoBehaviour:
   hasCondition: 0
   requiredItem: {fileID: 0}
   item: {fileID: 0}
+  hasEvent: 0
+  conditionedEvent:
+    hasCondition: 0
+    requiredItem: {fileID: 0}
+    gameEvent: {fileID: 0}
+  hasFight: 1
+  conditionedFight:
+    hasCondition: 0
+    requiredItem: {fileID: 11400000, guid: 3706374d9c9b01649965b588824bf45c, type: 2}
+    fightData: {fileID: 11400000, guid: c497129837418d7489daeba2842abf04, type: 2}

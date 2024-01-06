@@ -32,6 +32,7 @@ public class GameStateManager : MonoBehaviour
     
     public EmptyGameEvent interactAnimationEvent;
     public Vector3GameEvent moveEvent;
+    public FightDataEvent fightEvent;
     
     private InteractableData currentData;
     
@@ -168,13 +169,23 @@ public class GameStateManager : MonoBehaviour
     {
         if (currentData.hasFight)
         {
-            currentGameState = GameState.Fighting;
-            return true;
+            if (currentData.conditionedFight.hasCondition)
+            {
+                if (inventorySystem.GetInventory().Contains(currentData.conditionedFight.requiredItem))
+                {
+                    fightEvent.Raise(currentData.conditionedFight.fightData);
+                    currentGameState = GameState.Fighting;
+                    return true;
+                }
+            }
+            else
+            {
+                fightEvent.Raise(currentData.conditionedFight.fightData);
+                currentGameState = GameState.Fighting;
+                return true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     private bool CheckForObtainable()

@@ -1,17 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using GD;
+using ICA2.My_Assets.Scripts.ScriptableObjects;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class FightManager : MonoBehaviour
 {
+    public GameObject playerPosition;
+    public Vector3 enemyPositionOffset;
+    public Vector3GameEvent PlayerPositionEvent;
     public SwordMovement swordMovement;
     public ShieldMovement shieldMovement;
     public TextMeshPro textMeshPro;
     public EmptyGameEvent HitAnimationEvent;
+    
+    public GameObject virtualCamera;
+    public GameObject fightingObjects;
+    
+    private FightData currentFightData;
+    
+    public Animator playerAnimator;
+    private int fightHash = Animator.StringToHash("Fight");
     
     private ZoneType shieldZoneType;
     private bool isParring = false;
@@ -58,6 +71,25 @@ public class FightManager : MonoBehaviour
 
         
     }
+
+    public void StartFight(FightData fightData)
+    {
+        PlayerPositionEvent.Raise(fightData.playerPosition.transform.position);
+        currentFightData = fightData;
+    }
+    
+    public void InitiateFight()
+    {
+        fightingObjects.SetActive(true);
+        currentFightData.enemyPosition.GetComponent<ShowHighlight>().DescriptionOff();
+        currentFightData.enemyPosition.GetComponent<EnemyAnimation>().SetFight(true);
+        playerAnimator.SetBool(fightHash, true);
+        playerPosition.transform.rotation = Quaternion.LookRotation(currentFightData.enemyPosition.transform.position - playerPosition.transform.position);
+        virtualCamera.gameObject.SetActive(true);
+        textMeshPro.text = "";
+        
+    }
+    
 
     private void SwingSword()
     {
