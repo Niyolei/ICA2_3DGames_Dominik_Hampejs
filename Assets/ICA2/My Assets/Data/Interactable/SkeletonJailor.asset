@@ -26,16 +26,16 @@ MonoBehaviour:
   hasObtainable: 0
   hasCondition: 0
   requiredItem: {fileID: 0}
-  item: {fileID: 0}
-  hasEvent: 0
+  item: {fileID: 11400000, guid: ec132cadfbd1e4147bfd8c421923a4e5, type: 2}
+  hasEvent: 1
   conditionedEvent:
-    hasCondition: 0
-    requiredItem: {fileID: 0}
-    gameEvent: {fileID: 0}
+    hasCondition: 1
+    requiredItem: {fileID: 11400000, guid: ec132cadfbd1e4147bfd8c421923a4e5, type: 2}
+    gameEvent: {fileID: 11400000, guid: 8fa2c2be33051de498d6365ab16ce9f1, type: 2}
   hasFight: 1
   conditionedFight:
-    hasCondition: 0
+    hasCondition: 1
     requiredItem: {fileID: 11400000, guid: 3706374d9c9b01649965b588824bf45c, type: 2}
     fightData: {fileID: 11400000, guid: c497129837418d7489daeba2842abf04, type: 2}
-    winDialogue: {fileID: 0}
+    winItem: {fileID: 11400000, guid: ec132cadfbd1e4147bfd8c421923a4e5, type: 2}
     loseDialogue: {fileID: 11400000, guid: a0f03553a878768459767e7aec2b9ea3, type: 2}

@@ -111,6 +111,7 @@ public class FightManager : MonoBehaviour
         StartCoroutine(StartSwings());
         currentHealth = maxHealth;
         enemyCurrentHealth = enemyMaxHealth;
+        shouldSwing = false;
         isFighting = true;
     }
     
@@ -165,7 +166,7 @@ public class FightManager : MonoBehaviour
         HitAnimationEvent.Raise(new Empty());
         if (currentHealth <= 0)
         {
-            EndFight(false);
+            StartCoroutine(EndFight(false));
         }
     }
     
@@ -174,20 +175,22 @@ public class FightManager : MonoBehaviour
         enemyCurrentHealth--;
         if (enemyCurrentHealth <= 0)
         {
-            EndFight(true);
+            StartCoroutine(EndFight(true));
         }
     }
 
-    private void EndFight(bool win)
+    IEnumerator EndFight(bool win)
     {
         isFighting = false;
+        yield return new WaitForSeconds(0.5f);
         virtualCamera.gameObject.SetActive(false);
         fightingObjects.SetActive(false);
         currentFightData.enemyPosition.GetComponent<EnemyAnimation>().SetFight(false);
         playerAnimator.SetBool(fightHash, false);
-        StopAllCoroutines();
         swordMovement.OriginalPosition();
+        StopAllCoroutines();
         endOfFightEvent.Raise(win);
+        
     }
     
   

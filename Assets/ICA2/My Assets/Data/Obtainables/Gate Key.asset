@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a4de141f06d8a439784bcecd155e87, type: 3}
-  m_Name: Shield Obtained
+  m_Script: {fileID: 11500000, guid: cc246e7acca3ea848a1b702f23a0ecf9, type: 3}
+  m_Name: Gate Key
   m_EditorClassIdentifier: 
-  Monologues:
-  - Title: Juan
-    Line: Aha! A shield! Now I can face the Skeleton jailor!
+  name: Gate Key
+  image: {fileID: 0}
+  description: Key to a wooden gate
+  dialogueData: {fileID: 11400000, guid: 656c3bbfdfa5ceb4f82a6bbdd807eec8, type: 2}

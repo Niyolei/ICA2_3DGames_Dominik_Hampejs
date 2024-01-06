@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3441578014718011658}
   - component: {fileID: 5572429842242471897}
   - component: {fileID: 6510918931027057661}
+  - component: {fileID: 8929464001066720234}
   m_Layer: 0
   m_Name: Listeners
   m_TagString: Untagged
@@ -139,6 +140,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8929464001066720234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871436772960334912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d271e704cbb16b24797a9420ddbe8f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: FIght ends
+  Event: {fileID: 11400000, guid: cfce5ec5a293b5445a310b5e4004a771, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6284509549269507573}
+        m_TargetAssemblyTypeName: GameStateManager, Assembly-CSharp
+        m_MethodName: Fighting
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7090922935033266722
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +222,7 @@ MonoBehaviour:
   interactAnimationEvent: {fileID: 11400000, guid: 0c1604fab51e674488aa235ef5cf9a25,
     type: 2}
   moveEvent: {fileID: 11400000, guid: 405a4a03b238fd744901eee5551af436, type: 2}
+  fightEvent: {fileID: 11400000, guid: 3227cd037e212d94fa7e69d3dfba6b27, type: 2}
 --- !u!114 &5909016239788218545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInRange: {fileID: 11400000, guid: 73ff0fc1c38f7ca488f4ee6bd370747c, type: 2}
-  helpTextEvent: {fileID: 11400000, guid: cba5db02d1b5b2c4088d44561bb28dc6, type: 2}
 --- !u!114 &4042776093416642061
 MonoBehaviour:
   m_ObjectHideFlags: 0

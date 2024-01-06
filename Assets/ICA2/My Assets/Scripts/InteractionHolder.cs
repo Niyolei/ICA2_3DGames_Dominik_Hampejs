@@ -6,4 +6,9 @@ public class InteractionHolder : MonoBehaviour
 {
     public bool playerInRange;
     public InteractableData interactableData;
+    
+    public void SwitchInteractable(InteractableData interactableData)
+    {
+        this.interactableData = interactableData;
+    }
 }

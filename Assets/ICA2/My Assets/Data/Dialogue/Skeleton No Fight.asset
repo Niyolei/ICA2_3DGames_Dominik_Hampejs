@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7a4de141f06d8a439784bcecd155e87, type: 3}
-  m_Name: Shield Obtained
+  m_Name: Skeleton No Fight
   m_EditorClassIdentifier: 
   Monologues:
-  - Title: Juan
-    Line: Aha! A shield! Now I can face the Skeleton jailor!
+  - Title: Skeleton
+    Line: God damn! Leave me alone. I gave you the key did't I?

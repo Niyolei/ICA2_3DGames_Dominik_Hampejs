@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a8ee03665c7b7f4f89f7615cb9e3fc6, type: 3}
-  m_Name: Gate
+  m_Name: Skeleton No Fight
   m_EditorClassIdentifier: 
   shouldPlayAnimation: 0
   conditionedDialogues:
-  - hasCondition: 1
-    requiredItem: {fileID: 11400000, guid: ec132cadfbd1e4147bfd8c421923a4e5, type: 2}
-    dialogueData: {fileID: 11400000, guid: b5f049288edcd2f44a27d732ff5fecee, type: 2}
-  - hasCondition: 1
+  - hasCondition: 0
     requiredItem: {fileID: 0}
-    dialogueData: {fileID: 11400000, guid: 59c227e5bff4fa14fa98861d06c910c9, type: 2}
+    dialogueData: {fileID: 11400000, guid: f78f8c5dc0601b141a156c0bc6791e9a, type: 2}
   hasObtainable: 0
   hasCondition: 0
   requiredItem: {fileID: 0}
   item: {fileID: 0}
-  hasEvent: 1
+  hasEvent: 0
   conditionedEvent:
-    hasCondition: 1
-    requiredItem: {fileID: 11400000, guid: ec132cadfbd1e4147bfd8c421923a4e5, type: 2}
-    gameEvent: {fileID: 11400000, guid: f39ffda7ad6da8e49b68b88d89eeb4b3, type: 2}
+    hasCondition: 0
+    requiredItem: {fileID: 0}
+    gameEvent: {fileID: 0}
   hasFight: 0
   conditionedFight:
     hasCondition: 0

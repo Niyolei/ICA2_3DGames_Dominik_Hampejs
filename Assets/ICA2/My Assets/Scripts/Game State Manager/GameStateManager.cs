@@ -219,19 +219,24 @@ public class GameStateManager : MonoBehaviour
     {
         if (currentData.hasEvent)
         {
-            if (currentData.hasCondition)
+            if (currentData.conditionedEvent.hasCondition)
             {
-                if (inventorySystem.GetInventory().Contains(currentData.requiredItem))
+                if (inventorySystem.GetInventory().Contains(currentData.conditionedEvent.requiredItem))
                 {
                     currentData.conditionedEvent.gameEvent.Raise(new Empty());
+                    currentGameState = GameState.AnEvent;
+                    return true;
                 }
+
+                return false;
             }
             else
             {
                 currentData.conditionedEvent.gameEvent.Raise(new Empty());
+                currentGameState = GameState.AnEvent;
+                return true;
             }
-            currentGameState = GameState.AnEvent;
-            return true;
+            
         }
         else
         {
@@ -264,6 +269,13 @@ public class GameStateManager : MonoBehaviour
     {
         if (outcome)
         {
+            if (currentData.conditionedFight.winItem != null)
+            {
+                inventorySystem.AddItem(currentData.conditionedFight.winItem);
+                dialogueFilter.AddItemDialogue(currentData.conditionedFight.winItem.dialogueData);
+                currentGameState = GameState.ItemObtained;
+                return;
+            }
             if (CheckForObtainable())
             {
                 return;

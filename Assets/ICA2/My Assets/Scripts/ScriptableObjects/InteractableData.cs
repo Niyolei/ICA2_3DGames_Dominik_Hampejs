@@ -49,6 +49,6 @@ public class ConditionedFight
     [ShowIf("hasCondition")]
     public Obtainable requiredItem;
     public FightData fightData;
-    public DialogueData winDialogue;
+    public Obtainable winItem;
     public DialogueData loseDialogue;
 }

@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a4de141f06d8a439784bcecd155e87, type: 3}
-  m_Name: Shield Obtained
+  m_Script: {fileID: 11500000, guid: 738dd27f39332794f8b98b856d52b658, type: 3}
+  m_Name: Skeleton No Fight
   m_EditorClassIdentifier: 
-  Monologues:
-  - Title: Juan
-    Line: Aha! A shield! Now I can face the Skeleton jailor!
