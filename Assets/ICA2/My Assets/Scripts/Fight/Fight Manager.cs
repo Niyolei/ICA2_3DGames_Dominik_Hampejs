@@ -41,10 +41,12 @@ public class FightManager : MonoBehaviour
         if (zoneType == shieldZoneType)
         {
             textMeshPro.text = "Blocked";
+            swordMovement.Blocked(zoneType);
         }
         else
         {
             textMeshPro.text = "Hit";
+            swordMovement.Hit();
         }
         
     }

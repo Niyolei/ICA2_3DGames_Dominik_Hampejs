@@ -56,8 +56,8 @@ public class SwordMovement : MonoBehaviour
     public Vector3 leftDownAttackRotation = new Vector3(40, -190, 25);
     [TabGroup("Sword Attack Rotation")]
     public Vector3 leftTopAttackRotation = new Vector3(-40, -190, -25);
-    
-    
+
+    public GameObject hitZone;
     
     private Vector3 _swordOriginalPosition;
     private Vector3 _swordOriginalRotation;
@@ -223,5 +223,59 @@ public class SwordMovement : MonoBehaviour
         sword.transform.DOLocalMove(leftTopAttackZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.InQuad);
         sword.transform.DOLocalRotate(leftTopAttackRotation, toAttackZoneTime).SetEase(Ease.InQuad);
     }
+    
+    public void Hit()
+    {
+        sword.transform.DOLocalMove(hitZone.transform.localPosition, toAttackZoneTime).SetEase(Ease.OutBack);
+    }
+    
+    public void Blocked(ZoneType type)
+    {
+        switch (type)
+        {
+            case ZoneType.Top:
+                BlockedTop();
+                break;
+            case ZoneType.RightTop:
+                BlockedRightTop();
+                break;
+            case ZoneType.LeftTop:
+                BlockedLeftTop();
+                break;
+            case ZoneType.RightBottom:
+                BlockedRightDown();
+                break;
+            case ZoneType.LeftBottom:
+                BlockedLeftDown();
+                break;
+            
+        }
+    }
+    
+    private void BlockedTop()
+    {
+        sword.transform.DOLocalMove(topZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+    }
+    
+    private void BlockedRightTop()
+    {
+        sword.transform.DOLocalMove(rightTopZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+    }
+    
+    private void BlockedLeftTop()
+    {
+        sword.transform.DOLocalMove(leftTopZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+    }
+    
+    private void BlockedRightDown()
+    {
+        sword.transform.DOLocalMove(rightDownZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+    }
+    
+    private void BlockedLeftDown()
+    {
+        sword.transform.DOLocalMove(leftDownZone.transform.localPosition, toZoneTime).SetEase(Ease.OutBack);
+    }
+    
     
 }
