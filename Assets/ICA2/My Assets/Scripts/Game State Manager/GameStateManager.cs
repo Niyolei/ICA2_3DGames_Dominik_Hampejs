@@ -37,6 +37,7 @@ public class GameStateManager : MonoBehaviour
     public Vector3GameEvent moveEvent;
     public FightDataEvent fightEvent;
     public ObtainableEvent itemToUIEvent;
+    public EmptyGameEvent dialogueEndUi;
     
     private InteractableData currentData;
     
@@ -84,6 +85,7 @@ public class GameStateManager : MonoBehaviour
             dialogueFilter.LeftClick();
             if (dialogueFilter.isEnd)
             {
+                dialogueEndUi.Raise(new Empty());
                 if (CheckForEvent())
                 {
                     return;
@@ -101,6 +103,7 @@ public class GameStateManager : MonoBehaviour
             dialogueFilter.LeftClick();
             if (dialogueFilter.isEnd)
             {
+                dialogueEndUi.Raise(new Empty());
                 if (CheckForFight())
                 {
                     return;

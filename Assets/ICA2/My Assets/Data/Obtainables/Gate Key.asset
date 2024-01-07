@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Gate Key
   m_EditorClassIdentifier: 
   name: Gate Key
-  image: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 9c7b71978c660a446a9bbe3c13885b26, type: 3}
   description: Key to a wooden gate
   dialogueData: {fileID: 11400000, guid: 656c3bbfdfa5ceb4f82a6bbdd807eec8, type: 2}

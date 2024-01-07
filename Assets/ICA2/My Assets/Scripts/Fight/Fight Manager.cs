@@ -29,6 +29,7 @@ public class FightManager : MonoBehaviour
     private ZoneType shieldZoneType;
     private bool isParring = false;
     private bool shouldParry = false;
+    [Header("Parry")]
     public float parryTime = 0.2f;
     private float parryTimer = 0f;
     
@@ -38,17 +39,22 @@ public class FightManager : MonoBehaviour
     private bool isFighting = false;
     
     private bool shouldSwing = false;
-    
+    [Header("Health")]
     public int maxHealth = 3;
     private int currentHealth;
     public int enemyMaxHealth = 3;
     private int enemyCurrentHealth;
     
+    [Header("Events")]
     public BoolGameEvent endOfFightEvent;
     
     private AudioPlayer audioPlayer;
     
     public BoolGameEvent fightMusicEvent;
+    public FloatGameEvent healthChangeEvent;
+    public FloatGameEvent enemyHealthChangeEvent;
+    
+    
     
     
     void Start()
@@ -175,6 +181,7 @@ public class FightManager : MonoBehaviour
         swordMovement.Hit();
         HitAnimationEvent.Raise(new Empty());
         audioPlayer.PlayAudio(3);
+        healthChangeEvent.Raise(currentHealth/(float)maxHealth);
         if (currentHealth <= 0)
         {
             StartCoroutine(EndFight(false));
@@ -184,6 +191,7 @@ public class FightManager : MonoBehaviour
     private void Parry()
     {
         enemyCurrentHealth--;
+        enemyHealthChangeEvent.Raise(enemyCurrentHealth/(float)enemyMaxHealth);
         if (enemyCurrentHealth <= 0)
         {
             StartCoroutine(EndFight(true));

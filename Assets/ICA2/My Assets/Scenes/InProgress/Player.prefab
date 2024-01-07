@@ -5837,6 +5837,9 @@ MonoBehaviour:
   enemyMaxHealth: 3
   endOfFightEvent: {fileID: 11400000, guid: cfce5ec5a293b5445a310b5e4004a771, type: 2}
   fightMusicEvent: {fileID: 11400000, guid: bc21bbc380001184784a068cd9ea1d56, type: 2}
+  healthChangeEvent: {fileID: 11400000, guid: 537da8c8787cb63498d6cdf06fd70c6d, type: 2}
+  enemyHealthChangeEvent: {fileID: 11400000, guid: f838c3166246b8c4f86a46196cf9b755,
+    type: 2}
 --- !u!114 &4827783634077792137
 MonoBehaviour:
   m_ObjectHideFlags: 0
