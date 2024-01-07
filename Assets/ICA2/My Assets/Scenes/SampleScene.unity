@@ -129,76 +129,6 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 244082511353328286}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1079957491 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 244082511353328286}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1079957498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079957491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd150217a11ca21448ed14c452fd69c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: 
-  Event: {fileID: 11400000, guid: d3c6157d34cbf954a8425b48596c5eb2, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1159149961}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1079957499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079957491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f7e23b28b2bd2429d86322c96c9b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  description: 
-  Event: {fileID: 11400000, guid: 1ce040db0aae4eb45a21b30119ecd43f, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1159149961}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!1 &1159149961 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4553381940169216505, guid: 58629171c01033f4f89f36878a84b8fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 244082511353328286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1169428887 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8050770215731963096, guid: dd6a5bd833f5c7a4dbeb866e6693a80e,
@@ -263,6 +193,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2373901854632142568, guid: 58629171c01033f4f89f36878a84b8fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589062210893096080, guid: 58629171c01033f4f89f36878a84b8fb,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -1346.0251
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589062210893096080, guid: 58629171c01033f4f89f36878a84b8fb,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099042399035469995, guid: 58629171c01033f4f89f36878a84b8fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
         type: 3}
       propertyPath: m_Name
@@ -271,15 +221,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1079957498}
-    - targetCorrespondingSourceObject: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1079957499}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58629171c01033f4f89f36878a84b8fb, type: 3}
 --- !u!1001 &1336127553316048010
 PrefabInstance:
@@ -339,12 +281,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6284509549269507573, guid: 806776f281690e84893cce2e0508599c,
-        type: 3}
-      propertyPath: dialogueEndUi
-      value: 
-      objectReference: {fileID: 11400000, guid: 1ce040db0aae4eb45a21b30119ecd43f,
-        type: 2}
     - target: {fileID: 7090922935033266722, guid: 806776f281690e84893cce2e0508599c,
         type: 3}
       propertyPath: m_Name

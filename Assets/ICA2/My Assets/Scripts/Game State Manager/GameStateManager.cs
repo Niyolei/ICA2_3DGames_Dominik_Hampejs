@@ -43,6 +43,8 @@ public class GameStateManager : MonoBehaviour
     
     private bool fightEnd = false;
     
+    public InteractableData initialDialogue;
+    
     void Start()
     {
         hoverBehaviour = GetComponent<OnHoverBehaviour>();
@@ -123,7 +125,9 @@ public class GameStateManager : MonoBehaviour
 
     public void StartGame()
     {
-        currentGameState = GameState.Moving;
+        currentGameState = GameState.Dialogue;
+        currentData = initialDialogue;
+        dialogueFilter.handleDialogue(initialDialogue, inventorySystem.GetInventory());
     }
     
     public void OnPause(bool isPaused)
@@ -308,8 +312,10 @@ public class GameStateManager : MonoBehaviour
         
     }
     
-    private void GameOver()
+    public void TriggerInteraction(InteractableData interactableData)
     {
-        
+        currentData = interactableData;
+        currentGameState = GameState.Dialogue;
+        dialogueFilter.handleDialogue(currentData, inventorySystem.GetInventory());
     }
 }

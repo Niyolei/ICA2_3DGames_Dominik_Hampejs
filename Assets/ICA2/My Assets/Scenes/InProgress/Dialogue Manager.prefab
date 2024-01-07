@@ -277,15 +277,16 @@ MonoBehaviour:
   m_text: ajadifau ajdkfajksdf ajkdafdasi jdakfjakdfu jafu afn udnad jduan dbnay
     andyuy ahays hadyd an
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ae1b638135e7ad146956e444be2e470c, type: 2}
+  m_sharedMaterial: {fileID: -5476142404626536084, guid: ae1b638135e7ad146956e444be2e470c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287221752
-  m_fontColor: {r: 0.9716981, g: 0.8115802, b: 0.5377951, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -402,14 +403,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13288435, g: 0.3679245, b: 0.050907753, a: 0.8352941}
+  m_Color: {r: 0.15044853, g: 0.4716981, b: 0.078616306, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cdf7911f23bec96499023f441ff88989, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe0ec2aac5f488d499f75d354a5579f2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -590,8 +591,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Talker
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ae1b638135e7ad146956e444be2e470c, type: 2}
+  m_sharedMaterial: {fileID: -5476142404626536084, guid: ae1b638135e7ad146956e444be2e470c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -126,6 +126,8 @@ public class FightManager : MonoBehaviour
         StartCoroutine(StartSwings());
         currentHealth = maxHealth;
         enemyCurrentHealth = enemyMaxHealth;
+        healthChangeEvent.Raise(currentHealth/(float)maxHealth);
+        enemyHealthChangeEvent.Raise(enemyCurrentHealth/(float)enemyMaxHealth);
         shouldSwing = false;
         isFighting = true;
     }

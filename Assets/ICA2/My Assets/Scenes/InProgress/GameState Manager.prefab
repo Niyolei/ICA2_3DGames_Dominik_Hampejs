@@ -224,6 +224,8 @@ MonoBehaviour:
   moveEvent: {fileID: 11400000, guid: 405a4a03b238fd744901eee5551af436, type: 2}
   fightEvent: {fileID: 11400000, guid: 3227cd037e212d94fa7e69d3dfba6b27, type: 2}
   itemToUIEvent: {fileID: 11400000, guid: bf14c6559e0feb14791f1b42c475f2f7, type: 2}
+  dialogueEndUi: {fileID: 11400000, guid: 1ce040db0aae4eb45a21b30119ecd43f, type: 2}
+  initialDialogue: {fileID: 11400000, guid: 56b2bb549f8c26f4492d66a88f0faa23, type: 2}
 --- !u!114 &5909016239788218545
 MonoBehaviour:
   m_ObjectHideFlags: 0

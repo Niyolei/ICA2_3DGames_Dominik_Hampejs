@@ -14,6 +14,9 @@ public class UIInventory : MonoBehaviour
     
     private Vector3 originalPosition;
     
+    [Header("Progression")]
+    public ProgressUI progressionUI;
+    
     public void Start()
     {
         originalPosition = transform.localPosition;
@@ -23,6 +26,7 @@ public class UIInventory : MonoBehaviour
     public void AddItem(Obtainable item)
     {
         inventoryItems.Add(item);
+        progressionUI.SetProgress(item);
         inventorySlots[inventoryItems.Count - 1].GetComponent<UnityEngine.UI.Image>().sprite = item.sprite;
     }
     
