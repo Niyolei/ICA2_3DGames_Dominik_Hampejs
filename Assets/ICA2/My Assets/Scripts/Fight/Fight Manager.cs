@@ -48,6 +48,8 @@ public class FightManager : MonoBehaviour
     
     private AudioPlayer audioPlayer;
     
+    public BoolGameEvent fightMusicEvent;
+    
     
     void Start()
     {
@@ -103,6 +105,7 @@ public class FightManager : MonoBehaviour
     public void StartFight(FightData fightData)
     {
         PlayerPositionEvent.Raise(fightData.playerPosition.transform.position);
+        fightMusicEvent.Raise(true);
         currentFightData = fightData;
     }
     
@@ -196,6 +199,7 @@ public class FightManager : MonoBehaviour
         currentFightData.enemyPosition.GetComponent<EnemyAnimation>().SetFight(false);
         playerAnimator.SetBool(fightHash, false);
         swordMovement.OriginalPosition();
+        fightMusicEvent.Raise(false);
         StopAllCoroutines();
         endOfFightEvent.Raise(win);
         
