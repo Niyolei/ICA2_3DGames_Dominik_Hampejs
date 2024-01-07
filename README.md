@@ -4,7 +4,7 @@ References:
 
 Programming
 
-    Player Movement: Making Unity AI Agents Follow Your Player, https://www.youtube.com/watch?v=hOdLLaigcHs, Accessed On: 01/24
+    Player Movement: https://github.com/Reedster12/PlayerMovement/blob/main/PlayerMovement.cs lines 16 -27, Accessed On: 01/24
     Dialogue System: 5 Minute DIALOGUE SYSTEM in UNITY Tutorial, https://www.youtube.com/watch?v=8oTYabhj248. Accessed On: 01/24
   
 Sound
