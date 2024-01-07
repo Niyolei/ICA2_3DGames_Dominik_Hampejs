@@ -46,7 +46,13 @@ public class FightManager : MonoBehaviour
     
     public BoolGameEvent endOfFightEvent;
     
+    private AudioPlayer audioPlayer;
     
+    
+    void Start()
+    {
+        audioPlayer = GetComponent<AudioPlayer>();
+    }
 
     public void Update()
     {
@@ -137,6 +143,7 @@ public class FightManager : MonoBehaviour
             {
                 swordMovement.Blocked(zoneType);
                 shieldMovement.PlayParticle();
+                audioPlayer.PlayAudio(2);
                 Parry();
             }
             else
@@ -147,7 +154,7 @@ public class FightManager : MonoBehaviour
         }
         else if (zoneType == shieldZoneType)
         {
-            
+            audioPlayer.PlayAudio(1);
             swordMovement.Blocked(zoneType);
         }
         else
@@ -164,6 +171,7 @@ public class FightManager : MonoBehaviour
         currentHealth--;
         swordMovement.Hit();
         HitAnimationEvent.Raise(new Empty());
+        audioPlayer.PlayAudio(3);
         if (currentHealth <= 0)
         {
             StartCoroutine(EndFight(false));

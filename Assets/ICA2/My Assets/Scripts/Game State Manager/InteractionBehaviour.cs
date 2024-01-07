@@ -27,6 +27,11 @@ public class InteractionBehaviour : MonoBehaviour
             playerInRange.Raise(true);
             if (hit.collider.gameObject.GetComponent<InteractionHolder>().playerInRange)
             {
+                AudioSource audioSource = hit.collider.gameObject.GetComponent<AudioSource>();
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                }
                 playerInRange.Raise(false);
                 return hit.collider.gameObject.GetComponent<InteractionHolder>().interactableData;
             }
