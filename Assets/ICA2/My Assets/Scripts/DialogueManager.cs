@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     
     private DialogueData currentDialogue;
     
+    private AudioSource audioSource;
+    
     public float typingSpeed = 0.02f;
     private int index = 0;
     
@@ -23,6 +25,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueCamera.enabled = false;
+        audioSource = GetComponent<AudioSource>();
     }
     
     
@@ -73,6 +76,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
+            audioSource.Play();
             yield return new WaitForSeconds(typingSpeed);
         }
     }

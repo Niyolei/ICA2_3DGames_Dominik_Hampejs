@@ -71,7 +71,8 @@ AudioSource:
   m_GameObject: {fileID: 586618047205602553}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2308241269227358027, guid: b4d62d7c7ebe23e4aa15dc347e099fb4,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1928,7 +1929,7 @@ GameObject:
   - component: {fileID: 946711580507079085}
   - component: {fileID: 3175656429993881934}
   - component: {fileID: 8427784746838374532}
-  - component: {fileID: 5434231745162829675}
+  - component: {fileID: 2799831887862060459}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1992,7 +1993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf319718f4346f4eb86234cfbc079ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5434231745162829675
+  audioPlayer: {fileID: 9003848028603390853}
+--- !u!114 &2799831887862060459
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2001,11 +2003,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6847615010979788803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fba86832b0933c4aa55c9930c23ad7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0956a28e55b8f2347a14f7833ba5e44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Item to the UI
-  Event: {fileID: 11400000, guid: 0a3366e77a2d9474e840d425301a5a36, type: 2}
+  description: Item obtained
+  Event: {fileID: 11400000, guid: bf14c6559e0feb14791f1b42c475f2f7, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
