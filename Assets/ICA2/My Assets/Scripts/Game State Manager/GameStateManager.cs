@@ -154,6 +154,7 @@ public class GameStateManager : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
+            //Based on https://github.com/Reedster12/PlayerMovement/blob/main/PlayerMovement.cs 16 - 27
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             Vector3 targetPosition;

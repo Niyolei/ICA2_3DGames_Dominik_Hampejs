@@ -4,6 +4,8 @@ using GD;
 using TMPro;
 using UnityEngine;
 
+//This code is based on the tutorial from BMo https://www.youtube.com/watch?v=8oTYabhj248. Accessed On: 01/24
+//All functionality is the same, I just took everything out of the Update function and made it into a function that can be called from other scripts.
 public class DialogueManager : MonoBehaviour
 {
     public Camera dialogueCamera;
