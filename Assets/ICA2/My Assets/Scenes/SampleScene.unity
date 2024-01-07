@@ -129,6 +129,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 244082511353328286}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &906991958 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9003848028603390853, guid: 58629171c01033f4f89f36878a84b8fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 244082511353328286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2cb63b64e2bef440b88656cda0ee007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1003069217
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +332,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1011872410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 244082511353328286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1011872415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8427784746838374532, guid: 58629171c01033f4f89f36878a84b8fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 244082511353328286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011872410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf319718f4346f4eb86234cfbc079ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1011872416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011872410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0956a28e55b8f2347a14f7833ba5e44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Item obtained
+  Event: {fileID: 11400000, guid: bf14c6559e0feb14791f1b42c475f2f7, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1011872415}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ItemObtained
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!20 &1169428887 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8050770215731963096, guid: dd6a5bd833f5c7a4dbeb866e6693a80e,
@@ -384,30 +443,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4604411379873743477, guid: 58629171c01033f4f89f36878a84b8fb,
-        type: 3}
-      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5292955237432015841, guid: 58629171c01033f4f89f36878a84b8fb,
-        type: 3}
-      propertyPath: m_text
-      value: Get closer to Interact
-      objectReference: {fileID: 0}
     - target: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
         type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
+    - target: {fileID: 8427784746838374532, guid: 58629171c01033f4f89f36878a84b8fb,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+      propertyPath: audioPlayer
+      value: 
+      objectReference: {fileID: 906991958}
+    m_RemovedComponents:
+    - {fileID: 5434231745162829675, guid: 58629171c01033f4f89f36878a84b8fb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6847615010979788803, guid: 58629171c01033f4f89f36878a84b8fb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1011872416}
   m_SourcePrefab: {fileID: 100100000, guid: 58629171c01033f4f89f36878a84b8fb, type: 3}
 --- !u!1001 &1336127553316048010
 PrefabInstance:
@@ -467,6 +521,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6284509549269507573, guid: 806776f281690e84893cce2e0508599c,
+        type: 3}
+      propertyPath: itemToUIEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: bf14c6559e0feb14791f1b42c475f2f7,
+        type: 2}
+    - target: {fileID: 6284509549269507573, guid: 806776f281690e84893cce2e0508599c,
+        type: 3}
+      propertyPath: interactionEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a3366e77a2d9474e840d425301a5a36,
+        type: 2}
     - target: {fileID: 7090922935033266722, guid: 806776f281690e84893cce2e0508599c,
         type: 3}
       propertyPath: m_Name

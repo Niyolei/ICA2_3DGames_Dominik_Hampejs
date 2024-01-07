@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class GameStateManager : MonoBehaviour
     public EmptyGameEvent interactAnimationEvent;
     public Vector3GameEvent moveEvent;
     public FightDataEvent fightEvent;
+    public ObtainableEvent itemToUIEvent;
     
     private InteractableData currentData;
     
@@ -201,15 +203,23 @@ public class GameStateManager : MonoBehaviour
                 if (inventorySystem.GetInventory().Contains(currentData.requiredItem))
                 {
                     inventorySystem.AddItem(currentData.item);
+                    currentGameState = GameState.ItemObtained;
+                    dialogueFilter.AddItemDialogue(currentData.item.dialogueData);
+                    itemToUIEvent.Raise(currentData.item);
+                    return true;
                 }
+
+                return false;
             }
             else
             {
                 inventorySystem.AddItem(currentData.item);
+                currentGameState = GameState.ItemObtained;
+                dialogueFilter.AddItemDialogue(currentData.item.dialogueData);
+                itemToUIEvent.Raise(currentData.item);
+                return true;
             }
-            currentGameState = GameState.ItemObtained;
-            dialogueFilter.AddItemDialogue(currentData.item.dialogueData);
-            return true;
+            
         }
 
         return false;
@@ -273,6 +283,7 @@ public class GameStateManager : MonoBehaviour
             {
                 inventorySystem.AddItem(currentData.conditionedFight.winItem);
                 dialogueFilter.AddItemDialogue(currentData.conditionedFight.winItem.dialogueData);
+                itemToUIEvent.Raise(currentData.conditionedFight.winItem);
                 currentGameState = GameState.ItemObtained;
                 return;
             }
